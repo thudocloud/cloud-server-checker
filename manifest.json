@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Cloud Server Check Extension",
+  "version": "2.0",
+  "description": "Monitor AWS and Google Cloud server metrics.",
+  "permissions": [
+    "activeTab",
+    "notifications",
+    "storage",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://monitoring.amazonaws.com/*",
+    "https://monitoring.googleapis.com/*"
+  ],
+  "icons": {
+    "16": "icon_logo.png",
+    "48": "icon_logo.png",
+    "128": "icon_logo.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon_logo.png",
+      "48": "icon_logo.png",
+      "128": "icon_logo.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

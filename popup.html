@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Language attribute added for accessibility -->
+
+<head>
+  <meta charset="UTF-8"> <!-- Fixes the encoding issue for proper text display -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cloud Status Checker</title>
+  <style>
+    body {
+      width: 320px;
+      padding: 15px;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(135deg, #93a9d1 0%, #ffffff 170%);
+      color: #333;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #f7caca;
+      text-align: center;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+    }
+
+    select,
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 2px solid #f7caca;
+      border-radius: 8px;
+      box-sizing: border-box;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #666;
+      transition: all 0.3s ease;
+    }
+
+    select:focus,
+    input:focus {
+      outline: none;
+      border-color: #f7caca;
+      box-shadow: 0 0 5px rgba(248, 179, 202, 0.5);
+    }
+
+    #status {
+      margin: 15px 0;
+      padding: 12px;
+      border-radius: 8px;
+      background-color: rgba(255, 255, 255, 0.9);
+      text-align: center;
+      min-height: 20px;
+      border: 2px solid #f7caca;
+      font-weight: 500;
+    }
+
+    .timer-section {
+      margin-top: 15px;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      border: 2px solid #f7caca;
+    }
+
+    .checkbox-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .checkbox-wrapper input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      accent-color: #f7caca;
+    }
+
+    .checkbox-wrapper label {
+      color: #666;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #f7caca;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    button:hover {
+      background-color: #FF8EB2;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .status-online {
+      color: #4CAF50;
+      font-weight: bold;
+    }
+
+    .status-offline {
+      color: #f44336;
+      font-weight: bold;
+    }
+
+    .status-error {
+      color: #ff9800;
+      font-weight: bold;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #fff;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #f7caca;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #f7caca;
+    }
+
+    /* Loading animation */
+    .loading {
+      position: relative;
+    }
+
+    .loading:after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 50%;
+      left: 50%;
+      margin-top: -8px;
+      margin-left: -8px;
+      border-radius: 50%;
+      border: 2px solid #f7caca;
+      border-top-color: transparent;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <h1>☁️ Cloud Status Checker</h1>
+
+  <select id="platform">
+    <option value="">Select Platform</option>
+    <option value="aws">AWS</option>
+    <option value="gcloud">Google Cloud</option>
+  </select>
+
+  <div id="status">Status will appear here...</div>
+
+  <div class="timer-section">
+    <div class="checkbox-wrapper">
+      <input type="checkbox" id="timerCheckbox">
+      <label for="timerCheckbox">Enable auto-check with notification</label>
+    </div>
+
+    <input type="number" id="intervalInput" placeholder="Enter minutes you want to see" min="1" disabled>
+    <button id="saveTimer">Save Timer</button>
+  </div>
+
+  <script src="popup.js" type="module"></script>
+</body>
+
+</html>
